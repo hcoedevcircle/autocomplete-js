@@ -40,6 +40,6 @@ var config = {
 Do the magic
 ```js
 autocomplete.complete(config, function(data, output){
-	//Do whateer you like to do with data and output
+	//Do whateer you like to do with data and output (called when a thing in the suggestion is clicked)
 }); 
 ```
