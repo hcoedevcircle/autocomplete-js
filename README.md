@@ -18,7 +18,7 @@ You need a form: (and a special input)
 
 Include the JS File (at the end of doc) 
 
-```js
+```html
 <script type="text/javascript" src="autocomplete.js"></script>
 ```
 
