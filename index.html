@@ -2,6 +2,30 @@
 <html>
 <head>
 	<title>Test-Autocomplete</title>
+	<style>
+	/*This is responsible for every styling*/
+		#tag-div .tags{
+			padding-right: 10px;
+			padding-left:5px;
+			margin-left: 2px;
+			background-color: #aaa;
+			color: #fff;
+			font-size: smaller; 
+		}
+
+		#list-div .list{
+			cursor: pointer;
+			transition:.3s;
+			border:1px solid #ddd;
+
+		}
+		#list-div .list:hover{
+			background-color: #a2e4b8;
+			color:white;
+			transition:.3s;
+		}
+	</style>
+
 </head>
 <body>
 <form action="" id="myForm">
@@ -25,12 +49,22 @@ var config = {
 	innerHTMLkey:"name" /* The object key that is to be used as innerHTML*/
 }
 
+
+
 //call the method
 autocomplete.complete(config, function(data, output){
 	//alert(JSON.stringify(data));
 	//alert(JSON.stringify(output));
 	//tada! you have the selected data and the returned JSON data to play with.
 	//called on every selection made.
+	var leftBox = document.getElementById(config.inputId);
+	var myRect = leftBox.getBoundingClientRect();
+	var divObj = document.getElementById(config.divList)
+	var width = myRect.right - myRect.left;
+		divObj.setAttribute('style', "position:relative !important; left:"+ (myRect.left -5)+"px !important; width:"+width+"px; !important; border-radius:6px;");
+
+
+
 }); 
 
 </script>

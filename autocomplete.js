@@ -1,6 +1,6 @@
 /* autocomplete.js */
 var autocomplete = {
-	output:[],	
+	output:[],
 	callAjax: function(path, value_pair, callback){
 		var Ajax = new XMLHttpRequest();
 		Ajax.onreadystatechange = function(){
