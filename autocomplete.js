@@ -66,27 +66,15 @@ var autocomplete = {
 		currentElement.appendChild(tagElem);
 	},
 
-	in_array: function (needle, haystack, argStrict) {
-	  // http://kevin.vanzonneveld.net
-	  // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-	  // +   improved by: vlado houba
-	  // +   input by: Billy
-	  // +   bugfixed by: Brett Zamir (http://brett-zamir.me)
-	  var key = '',
-	    strict = !! argStrict;
+	in_array: function (needle, haystack) {
+	  for (var i = haystack.length - 1; i >= 0; i--) {
+	  //alert("haystack: "+JSON.stringify(haystack[i]));
+	  //alert("needle:" + JSON.stringify(needle));
+	  	if(JSON.stringify(haystack[i]) == JSON.stringify(needle)){
+	  		//alert("Same-same");
+	  		return true;
 
-	  if (strict) {
-	    for (key in haystack) {
-	      if (haystack[key] === needle) {
-	        return true;
-	      }
-	    }
-	  } else {
-	    for (key in haystack) {
-	      if (haystack[key] == needle) {
-	        return true;
-	      }
-	    }
+	  	}
 	  }
 	  return false;
 	},
