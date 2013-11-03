@@ -11,4 +11,27 @@
 
 </body>
 <script src="autocomplete.js"></script>
+<script>
+
+//Write the config
+var config = {
+	inputId:'complete', /* Which input field to hook on*/
+	path:"data.php",    /* Where to get data*/
+	divList:"list-div", /* ID for div to list autocomplete status ( you need to create this div) */
+	divListEach:"list", /* class-name for each element in autocomplete (no need to create this div)*/
+	divTag:"tag-div",   /* ID of element which will contain the selected thing */
+	elemClass:"tags",   /* class of every element in tagged list */
+	getVar:"sent",      /* The QueryString param*/ 
+	innerHTMLkey:"name" /* The object key that is to be used as innerHTML*/
+}
+
+//call the method
+autocomplete.complete(config, function(data, output){
+	//alert(JSON.stringify(data));
+	alert(JSON.stringify(output));
+	//tada! you have the selected data and the returned JSON data to play with.
+	//called on every selection made.
+}); 
+
+</script>
 </html>

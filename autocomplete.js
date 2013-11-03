@@ -1,3 +1,4 @@
+/* autocomplete.js */
 var autocomplete = {
 	output:[],	
 	callAjax: function(path, value_pair, callback){
@@ -97,30 +98,4 @@ var autocomplete = {
 		}
 	}
 }
-
 /* End Object */
-
-
-//Example
-
-//Write a config;
-
-var config = {
-	inputId:'complete',
-	path:"data.php",
-	divList:"list-div",
-	divListEach:"list",
-	divTag:"tag-div",
-	elemClass:"tags",
-	getVar:"sent",
-	outputVar:"output",
-	innerHTMLkey:"name"
-}
-
-//call the method
-autocomplete.complete(config, function(data, output){
-	//alert(JSON.stringify(data));
-	alert(JSON.stringify(output));
-	//tada! you have the selected data and the returned JSON data to play with.
-	//called on every selection made.
-}); 
