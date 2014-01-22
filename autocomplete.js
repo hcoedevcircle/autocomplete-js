@@ -1,8 +1,7 @@
 /* autocomplete.js */
 var autocomplete = {
 	output:[],
-	config:null,
-	callAjax: function(path, value_pair, callback){
+	callAjax: function(path, value_pair, getPost, callback){
 		var Ajax = new XMLHttpRequest();
 		Ajax.onreadystatechange = function(){
 			if(Ajax.readyState==4 && Ajax.status==200){
@@ -10,17 +9,19 @@ var autocomplete = {
 			}
 		}
 
-		Ajax.open('GET',path + '?'+ value_pair, true);
+		Ajax.open(gp ,path + '?'+ value_pair, true);
 		Ajax.send();
 	},
 	complete: function(config_autocomplete, callback){
 		var inputObject = document.getElementById(config_autocomplete.inputId);
+		config_autocomplete = this.setDefaultConfig(config_autocomplete);
 		var that = this; 
 		inputObject.addEventListener('keyup', function(){
 			var toSend = config_autocomplete.getVar + "="+ this.value
 			//alert(toSend);
 			var path = config_autocomplete.path;
-			that.callAjax(path, toSend, function(data){
+			//var gp = config_autocomplete.reqType || 'GET';
+			that.callAjax(path, toSend, gp, function(data){
 				var myData = JSON.parse(data);
 				that.showList(config_autocomplete, myData, callback);
 			});	
@@ -86,9 +87,16 @@ var autocomplete = {
 			//Write another workaround
 		}
 	},
-	setConfig: function(conf){
-		this.config = conf;
-		return this.config;
+	setDefaultConfig: function(objConf){
+		var ret = {};
+		ret.divListEach = objConf.divListEach || 'list-div';
+		ret.elemClass = objConf.elemClass || 'tags';
+		ret.getVar = objConf.getVar || 'sent';
+		ret.innerHTMLkey = objConf.innerHTMLKey || 'name';
+		ret.reqType = objConf.reqType || 'GET';
+		return ret;
+		
 	}
+	
 }
 /* End Object */
