@@ -1,6 +1,7 @@
 /* autocomplete.js */
 var autocomplete = {
 	output:[],
+	config:null,
 	callAjax: function(path, value_pair, callback){
 		var Ajax = new XMLHttpRequest();
 		Ajax.onreadystatechange = function(){
@@ -84,6 +85,10 @@ var autocomplete = {
 		} else {
 			//Write another workaround
 		}
+	},
+	setConfig: function(conf){
+		this.config = conf;
+		return this.config;
 	}
 }
 /* End Object */
